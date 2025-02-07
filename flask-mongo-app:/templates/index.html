@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to User Data App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Welcome to the User Data App</h1>
+            <p>Manage your data efficiently with ease.</p>
+        </div>
+    </header>
+
+    <section class="main-content">
+        <div class="container">
+            <h2>What would you like to do?</h2>
+            <p>Use the options below to either add or view data.</p>
+
+            <div class="button-group">
+                <a href="{{ url_for('insert_page') }}" class="btn">Insert Data</a>
+                <a href="{{ url_for('view_data') }}" class="btn">View Data</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Created by Your Name &copy; 2025</p>
+        </div>
+    </footer>
+
+</body>
+</html>

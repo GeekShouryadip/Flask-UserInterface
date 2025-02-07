@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Insert User Data</h1>
+    <form action="{{ url_for('insert_data') }}" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" placeholder="Street" required>
+        <input type="text" id="city" name="city" placeholder="City" required>
+        <input type="text" id="state" name="state" placeholder="State" required>
+        <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
+
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" required>
+
+        <label for="marital_status">Marital Status:</label>
+        <select id="marital_status" name="marital_status" onchange="toggleWifeNameField()" required>
+            <option value="">Select...</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+        </select>
+
+        <div id="wife_name_container" style="display: none;">
+            <label for="wife_name">Wife's Name:</label>
+            <input type="text" id="wife_name" name="wife_name">
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <p><a href="{{ url_for('view_data') }}">View Data</a></p>
+
+    <script>
+        function toggleWifeNameField() {
+            var maritalStatus = document.getElementById('marital_status').value;
+            var wifeNameContainer = document.getElementById('wife_name_container');
+
+            if (maritalStatus === "Married") {
+                wifeNameContainer.style.display = "block";
+            } else {
+                wifeNameContainer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>View All User Data</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Occupation</th>
+            <th>Marital Status</th>
+            <th>Wife's Name</th>
+        </tr>
+        {% for user in data %}
+        <tr>
+            <td>{{ user['name'] }}</td>
+            <td>{{ user['age'] }}</td>
+            <td>{{ user['dob'] }}</td>
+            <td>{{ user['email'] }}</td>
+            <td>{{ user['phone'] }}</td>
+            <td>{{ user['address'] }}, {{ user['city'] }}, {{ user['state'] }} - {{ user['zip_code'] }}</td>
+            <td>{{ user['occupation'] }}</td>
+            <td>{{ user['marital_status'] }}</td>
+            <td>{{ user.get('wife_name', 'N/A') }}</td>  <!-- If no wife name, show N/A -->
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <p><a href="{{ url_for('insert_page') }}">Insert New Data</a></p>
+</body>
+</html>
